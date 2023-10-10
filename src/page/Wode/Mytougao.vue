@@ -1,8 +1,8 @@
 <template>
   <div class="mytougao">
-    <div class="gotocreator" @click="Gotocreator()">
+    <router-link  to='/creatorcenter' class="gotocreator" >
         进入创作者中心
-    </div>
+    </router-link>
   </div>
 </template>
 
@@ -11,17 +11,11 @@ export default {
 name:'Mytougao',
 data(){
     return{
-        ifgotocreator:false,
     }
 },
-props:['getifgoto'],
 components:{
 },
 methods:{
-    Gotocreator(){
-        this.ifgotocreator = true
-        this.getifgoto(this.ifgotocreator)
-    },
 }
 }
 </script>

@@ -1,64 +1,55 @@
 <template>
   <div id="app">
     <Header></Header>
-    <Search ></Search>
     <Welcome v-if="showWelcome"></Welcome>
-    <PageOption v-if="showPageOption" @index-clicked="handleIndexClicked"></PageOption>
-    <FenQu v-if="pageindex === 1"></FenQu>
-    <Dongtai v-if="pageindex === 2" :scale='scale' :showSelflike='showSelflike' :offsetX="offsetX" :offsetY="offsetY"></Dongtai>
-    <Wode v-if="pageindex === 3"></Wode>
+    <PageOption v-if="showPageOption"></PageOption>
+    <Swiper v-if="showSwiper"></Swiper>
+    <router-view :scale='scale' :showSelflike='showSelflike' :offsetX="offsetX" :offsetY="offsetY"></router-view>
   </div>
 </template>
 
 <script>
 import Header from './components/Header.vue'
-import Search from './components/Search.vue'
+import Swiper from './page/index/Swiper.vue'
 import Welcome from './page/index/Welcome.vue'
-import Dongtai from './page/Dongtai/Dongtai.vue'
-import PageOption from './page/index/PageOption.vue'
-import FenQu from './page/Fenqu/FenQu.vue'
-import Wode from './page/Wode/Wode.vue'
+import PageOption from './components/PageOption.vue'
 export default {
   name: 'App',
   components: {
      Header,
-     Search,
      Welcome,
-     Dongtai,
      PageOption,
-     FenQu,
-     Wode,
+     Swiper,
   },
   data() {
     return {
       showSelflike: false,
-      showWelcome: true,
       showPageOption:false,
+      showWelcome: true,
+      showSwiper:true,
       targetScrollPosition: 156, 
       scale:1,
       offsetX: 0,
       offsetY: 0,
-      pageindex:2
     };
   },
    mounted() {
     window.addEventListener('scroll', this.handleScroll);
+    this.$router.push('/welcome'); //在mounted时直接强制跳转至/welcome
   },
    beforeDestroy() {
     window.removeEventListener('scroll', this.handleScroll);
   },
    methods: {
-    handleIndexClicked(clickedIndex) {
-      console.log(clickedIndex)
-      this.pageindex = clickedIndex
-
-    },
+    //处理滑动至页面底部后跳转至动态页面
     handleScroll() {
       const currentScrollPosition = window.scrollY || window.pageYOffset;
       if (currentScrollPosition > this.targetScrollPosition) {
         this.showSelflike = true;
         this.showWelcome = false;
+        this.showSwiper = false;
         this.showPageOption = true;
+        this.$router.push('/dongtai') 
         const targetScale = 0.7;
         const targetOffsetX = 0; 
         const targetOffsetY = 70; 
@@ -107,4 +98,5 @@ export default {
   height: 1024px;
   background: #FFF;
 }
+
 </style>

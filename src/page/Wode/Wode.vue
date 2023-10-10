@@ -1,6 +1,5 @@
 <template>
   <div class="wode">
-    <div  v-if='!ifgotocreator'>
         <div class="backg"><img src="~@/assets/backg.png" alt="">
           <div class="user">
             <div class="userimg"><img src="~@/assets/selfimg.png" alt=""></div>
@@ -8,31 +7,20 @@
             <div class="usertext">{{gexingtext}}</div>
           </div>
         </div>
-        <Wodeoption :getpage="getpage"></Wodeoption>
-        <Myindex  v-if="wodepage === 1"></Myindex>
-        <Mytougao :getifgoto="getifgoto" v-if="wodepage === 2"></Mytougao>
-        <Myshoucang v-if="wodepage === 3"></Myshoucang>
-        <Mygexinghua v-if="wodepage === 4"></Mygexinghua>
-    </div>
-    <Creatorcenter :getifback='getifback' v-if='ifgotocreator' ></Creatorcenter>
-    <Footer></Footer>
+        <Wodeoption></Wodeoption>
+        <router-view></router-view>
+        <Footer></Footer>
   </div>
 </template>
 
 <script>
 import Wodeoption from './Wodeoption.vue'
-import Myindex from './Myindex.vue'
-import Mytougao from './Mytougao.vue'
-import Myshoucang from './Myshoucang.vue'
-import Mygexinghua from './Mygexinghua.vue'
 import Creatorcenter from './Creatorcenter.vue'
 import Footer from '../../components/Footer.vue'
 export default {
 name:'Wode',
 data(){
   return{
-    wodepage:3,
-    ifgotocreator:false,
     username:'用户名',
     gexingtext:"认证，个性签名"
   }
@@ -40,22 +28,9 @@ data(){
 components:{
   Wodeoption,
   Footer,
-  Myshoucang,
-  Myindex,
-  Mygexinghua,
-  Mytougao,
   Creatorcenter
 },
 methods:{
-    getifgoto(ifgoto){
-    this.ifgotocreator = ifgoto
-    },
-  getpage(index){
-    this.wodepage = index
-},
-   getifback(ifback){
-    this.ifgotocreator =!ifback
-    }
 }
 }
 </script>

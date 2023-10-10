@@ -1,52 +1,37 @@
 <template>
   <div class="pageOption">
-    <div class="fenqu" @click="Changecolor(1)">
-      <div class="fenqutext">分区</div>
+    <router-link to='/fenqu' class="fenqu" active-class="active">分区
       <div class="bottombar">
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="6" viewBox="0 0 30 6" fill="none">
-          <path :stroke="index === 1 ? '#B40B0B' : '#A7A4A4'" stroke-width="5" stroke-linecap="round" d="M3 3L27 3"/>
+          <path  stroke-width="5" stroke-linecap="round" d="M3 3L27 3"/>
         </svg>
       </div>
-    </div>
-    <div class="dongtai" @click="Changecolor(2)">
-      <div class="dongtaitext">动态</div>
+    </router-link>
+    <router-link to="/dongtai" class="dongtai" active-class="active" >动态
       <div class="bottombar">
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="6" viewBox="0 0 30 6" fill="none">
-          <path :stroke="index === 2 ? '#B40B0B' : '#A7A4A4'" stroke-width="5" stroke-linecap="round" d="M3 3L27 3"/>
+          <path   stroke-width="5" stroke-linecap="round" d="M3 3L27 3"/>
         </svg>
       </div>
-    </div>
-    <div class="wode" @click="Changecolor(3)">
-      <div class="wodetext">我的</div>
+    </router-link>
+    <router-link to="/wode" class="wode" active-class="active">我的
       <div class="bottombar">
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="6" viewBox="0 0 30 6" fill=" none">
-          <path :stroke="index === 3 ? '#B40B0B' : '#A7A4A4'" stroke-width="5" stroke-linecap="round" d="M3 3L27 3"/>
+          <path  stroke-width="5" stroke-linecap="round" d="M3 3L27 3"/>
         </svg>
       </div>
-    </div>
+    </router-link>
   </div>
 </template>
-
 <script>
 export default {
   name: 'PageOption',
   data() {
-    return {
-      index: 2
-    };
+    return{}
   },
-  methods: {
-    Changecolor(clickedIndex) {
-      this.index = clickedIndex;
-      this.$emit('index-clicked', clickedIndex);
-    }
-  }
 };
 </script>
-
-
-
-<style>
+<style scoped>
 .pageOption {
   position: relative;
   top: 40px;
@@ -57,15 +42,10 @@ export default {
   justify-content: space-between;
   z-index: 1;
 }
-.fenqu, .dongtai, .wode {
+.fenqu, .dongtai,.wode {
   width: 40px;
   height: 27px;
   cursor: pointer; /* 添加光标指针以指示它们是可单击的 */
-}
-.fenqu.active, .dongtai.active, .wode.active {
-  background-color: #B40B0B; /* 设置你希望的选中颜色 */
-}
-.fenqutext, .dongtaitext, .wodetext {
   color: #A7A4A4;
   font-family: Inter;
   font-size: 20px;
@@ -82,4 +62,14 @@ export default {
   stroke-width: 5px;
   stroke: #A7A4A4;
 }
+.fenqu.active, .dongtai.active, .wode.active {
+  color: #B40B0B;
+}
+.active .bottombar{
+  stroke: #B40B0B;
+}
+a{
+  text-decoration: none;
+}
+
 </style>
