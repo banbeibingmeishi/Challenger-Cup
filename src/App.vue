@@ -1,25 +1,13 @@
 <template>
   <div id="app">
-    <Header></Header>
-    <Welcome v-if="showWelcome"></Welcome>
-    <PageOption v-if="showPageOption"></PageOption>
-    <Swiper v-if="showSwiper"></Swiper>
     <router-view :scale='scale' :showSelflike='showSelflike' :offsetX="offsetX" :offsetY="offsetY"></router-view>
   </div>
 </template>
 
 <script>
-import Header from './components/Header.vue'
-import Swiper from './page/index/Swiper.vue'
-import Welcome from './page/index/Welcome.vue'
-import PageOption from './components/PageOption.vue'
 export default {
   name: 'App',
   components: {
-     Header,
-     Welcome,
-     PageOption,
-     Swiper,
   },
   data() {
     return {

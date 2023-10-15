@@ -1,5 +1,7 @@
 <template>
 <div class="FenQu">
+  <Header></Header>
+  <PageOption></PageOption>
    <div class="backg">
     <img src="~@/assets/backg.png" alt="">
     <div class="fenquoption">
@@ -23,13 +25,17 @@
 </template>
 
 <script>
+import Header from '../../components/Header.vue'
 import Tuijianbq from './Tuijianbq.vue'
 import Footer from '../../components/Footer.vue'
+import PageOption from '../../components/PageOption.vue'
 export default {
 name:'FenQu',
 components:{
   Tuijianbq,
-  Footer
+  Footer,
+  Header,
+  PageOption
 }
 }
 </script>

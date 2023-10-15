@@ -38,4 +38,7 @@ font-weight: 500;
 line-height: 45px;
 text-align: center;
 }
+a{
+  text-decoration: none;
+}
 </style>

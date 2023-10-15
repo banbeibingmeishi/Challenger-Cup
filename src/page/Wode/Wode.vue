@@ -1,5 +1,7 @@
 <template>
   <div class="wode">
+    <Header></Header>
+    <PageOption></PageOption>
         <div class="backg"><img src="~@/assets/backg.png" alt="">
           <div class="user">
             <div class="userimg"><img src="~@/assets/selfimg.png" alt=""></div>
@@ -14,6 +16,8 @@
 </template>
 
 <script>
+import Header from '../../components/Header.vue'
+import PageOption from '../../components/PageOption.vue'
 import Wodeoption from './Wodeoption.vue'
 import Creatorcenter from './Creatorcenter.vue'
 import Footer from '../../components/Footer.vue'
@@ -28,7 +32,9 @@ data(){
 components:{
   Wodeoption,
   Footer,
-  Creatorcenter
+  Creatorcenter,
+  Header,
+  PageOption
 },
 methods:{
 }

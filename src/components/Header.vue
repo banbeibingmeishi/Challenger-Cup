@@ -13,7 +13,7 @@
 </svg>
 </div>
       <div class="line"></div>
-      <div class="login">
+      <div @click="Gotologin" class="login">
         <div class="login-content">
           <div class="userimg"></div>
           <div class="pleaselog"><svg width="48" height="15" viewBox="0 0 48 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -28,12 +28,12 @@
         </div>
       </div>
       <div class="line"></div>
-      <div   class="optionlist-index">
-        <svg @click="Showoption" @mouseout="Changecolortonone"  @mouseover="Changecolortoblack" width="31" height="16" viewBox="0 0 31 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <div  @click.stop="Showoption"  @mouseout="Changecolortonone"  @mouseover="Changecolortoblack"  class="optionlist-index">
+        <svg class="option-index-text" width="31" height="16" viewBox="0 0 31 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M3.616 8.032H12.416V9.008H3.616V8.032ZM3.616 10.656H12.416V11.616H3.616V10.656ZM3.616 13.296H12.464V14.368H3.616V13.296ZM0.848 2.784H15.168V3.904H0.848V2.784ZM2.672 5.392H13.312V15.28H12.08V6.448H3.872V15.28H2.672V5.392ZM7.408 3.36L8.88 3.456C8.576 4.4 8.192 5.408 7.904 6.096L6.736 5.92C7.008 5.2 7.28 4.112 7.408 3.36ZM11.216 0.544L12.544 0.895999C11.968 1.76 11.264 2.656 10.688 3.264L9.648 2.928C10.192 2.272 10.848 1.264 11.216 0.544ZM3.632 0.976L4.688 0.511999C5.28 1.072 5.904 1.872 6.224 2.416L5.104 2.992C4.832 2.432 4.192 1.584 3.632 0.976ZM17.168 1.44H30.96V2.56H17.168V1.44ZM23.328 2.016L24.704 2.224C24.288 3.2 23.792 4.272 23.376 4.992L22.32 4.768C22.672 4.016 23.12 2.832 23.328 2.016ZM23.408 6.608H24.656V9.536C24.656 11.728 23.744 13.952 17.52 15.28C17.392 15.04 17.056 14.56 16.8 14.32C22.736 13.12 23.408 11.216 23.408 9.504V6.608ZM24.72 12.256L25.408 11.44C27.232 12.224 29.664 13.504 30.896 14.384L30.144 15.328C28.976 14.432 26.576 13.104 24.72 12.256ZM18.736 4.496H29.424V11.936H28.144V5.6H19.952V11.952H18.736V4.496Z" :fill="fillcolor"/>
         </svg>
       </div>
-      <Indexoption v-if="showoption"></Indexoption>
+      <Indexoption class="indexoption" v-if="showoption" @click.stop></Indexoption>
     </div>
   </div>
 </template>
@@ -46,8 +46,22 @@ name:'Header',
 data(){
   return{
     showoption:false,
+    ifclick:false,
     fillcolor:'#A7A4A4',
-    ifclick:false
+  }
+},
+watch:{
+  showoption(){
+      document.addEventListener('click',(e)=>{
+      if(e.target.className!=='optionlist-index'&& e.target.className!=='indexoption'&&e.target.className!=='option-index-text'){
+        this.showoption=false;
+        this.fillcolor = '#A7A4A4';
+        this.ifclick = false;
+        }
+        else{
+          document.removeEventListener('click', () => {})
+        }
+    })
   }
 },
 components:{
@@ -67,13 +81,17 @@ methods:{
      this.fillcolor='#A7A4A4'
     }
   else{
+      this.fillcolor='#000000'
   }
+  },
+  Gotologin(){
+    this.$router.push('/login')
   }
 }
 }
 </script>
 
-<style>
+<style >
 .header{
     width: 1440px;
     height: 81px;
@@ -124,7 +142,7 @@ line-height: 81px;
   font-weight: 400;
   line-height: 81px;
 }
-.optionlist-index svg{
+.optionlist-index {
     cursor: pointer;
 }
 .login{

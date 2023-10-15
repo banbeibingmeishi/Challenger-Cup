@@ -1,5 +1,7 @@
 <template>
    <div class="Dongtai">   
+      <Header></Header>
+      <PageOption></PageOption>
       <transition name="scale-transition">
       <Swiper :style="{ transform: 'scale(' + scale + ') translate(' + offsetX + 'px, ' + offsetY + 'px)' }"></Swiper>
       </transition>
@@ -8,14 +10,18 @@
 </template>
 
 <script>
+import Header from '../../components/Header.vue'
+import PageOption from '../../components/PageOption.vue'
 import Selflike from './Selflike.vue'
-import Swiper from '../index/Swiper.vue'
+import Swiper from '../../components/Swiper.vue'
 export default {
 name:'Dongtai',
 props:['showSelflike','offsetX','offsetY','scale'],
 components:{
     Selflike,
-    Swiper
+    Swiper,
+    Header,
+    PageOption
 }
 }
 </script>
