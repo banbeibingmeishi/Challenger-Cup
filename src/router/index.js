@@ -18,6 +18,7 @@ VueRouter.prototype.push = function push(location) {
 
 //创建一个路由器
 export default new VueRouter({
+    mode:"history",
     routes:
     [       {
                 path:'/welcome',
