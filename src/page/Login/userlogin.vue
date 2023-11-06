@@ -5,16 +5,10 @@
         <path d="M11.25 6.75V11.25H6.75V6.75H11.25ZM13.5 4.5H4.5V13.5H13.5V4.5ZM11.25 18.75V23.25H6.75V18.75H11.25ZM13.5 16.5H4.5V25.5H13.5V16.5ZM23.25 6.75V11.25H18.75V6.75H23.25ZM25.5 4.5H16.5V13.5H25.5V4.5ZM16.5 16.5H18.75V18.75H16.5V16.5ZM18.75 18.75H21V21H18.75V18.75ZM21 16.5H23.25V18.75H21V16.5ZM16.5 21H18.75V23.25H16.5V21ZM18.75 23.25H21V25.5H18.75V23.25ZM21 21H23.25V23.25H21V21ZM23.25 18.75H25.5V21H23.25V18.75ZM23.25 23.25H25.5V25.5H23.25V23.25ZM30 7.5H27V3H22.5V0H30V7.5ZM30 30V22.5H27V27H22.5V30H30ZM0 30H7.5V27H3V22.5H0V30ZM0 0V7.5H3V3H7.5V0H0Z" fill="#545454"/>
         </svg>
     </div>
-    <div class="loginway">
-        <div class="phone">验证码登录</div>
-        <div class="idpassword">账号密码登录</div>
-    </div>
-    <div class="optionline"></div>
-    <!-- 后续用router-view代替 -->
-    <Phonelogin></Phonelogin> 
-    <div class="loginbutton">登录</div>
+    <LoginWay></LoginWay>
+    <router-view></router-view>
     <div class="forget">忘记密码</div>
-    <div class="register">免费注册</div>
+    <router-link to="/register" class="register">免费注册</router-link>
     <div class="agree">
         <div class="check">
             <input type="checkbox">
@@ -66,11 +60,11 @@
 </template>
 
 <script>
-import Phonelogin from './phonelogin.vue'
+import LoginWay from './LoginWay.vue'
 export default {
-name:'Userlogin',
+name:'UserLogin',
 components:{
-    Phonelogin
+    LoginWay
 }
 }
 </script>
@@ -86,29 +80,12 @@ components:{
     position: absolute;
     top: 211px;
     left: 829px;
+    z-index: 999;
 }
 .scansvg{
     position: relative;
     top: 19px;
     left: 352px;
-}
-.loginway{
-    width: 406px;
-    height: 32px;
-    display: flex;
-    color: #000;
-    font-family: Inter;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
-.phone{
-    position: relative;
-    top: 35px;
-    left: 47px;
-    width: 82px;
-    height: 18px;
 }
 .idpassword{
     position: relative;
@@ -125,25 +102,9 @@ components:{
     position: relative;
     top: 47px;
 }
-.loginbutton{
-    margin: auto;
-    position: relative;
-    top: 130px;
-    width: 311px;
-    height: 36px;
-    border-radius: 5px;
-    background: #B40B0B;
-    color: #FFF;
-    font-family: Inter;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 36px;
-    text-align: center;
-}
 .forget{
     position: relative;
-    top: 150px;
+    top: 100px;
     left: 116px;
     width: 87px;
     height: 15px;
@@ -154,10 +115,11 @@ components:{
     font-style: normal;
     font-weight: 400;
     line-height: 15px;
+    cursor: pointer;
 }
 .register{
     position: relative;
-    top: 135px;
+    top: 80px;
     left: 245px;
     width: 87px;
     height: 15px;
@@ -167,12 +129,13 @@ components:{
     font-style: normal;
     font-weight: 400;
     line-height: 15px;
+    cursor: pointer;
 }
 .check{
     width: 270px;
     height: 12px;
     position: relative;
-    top: 150px;
+    top: 110px;
     left: 49px;
 }
 .check input{
@@ -183,7 +146,7 @@ components:{
     width: 257px;
     height: 12px;
     position: relative;
-    top: 140px;
+    top: 100px;
     left: 70px;
     color: #000;
     font-family: Inter;
@@ -206,7 +169,7 @@ components:{
     display: flex;
     justify-content: space-around;
     position: relative;
-    top: 170px;
+    top: 120px;
     width: 340px;
     height: 15px;
 }
@@ -227,7 +190,7 @@ components:{
 }
 .moreicon{
     position: relative;
-    top: 190px;
+    top: 150px;
     margin: auto;
     width: 200px;
     display: flex;

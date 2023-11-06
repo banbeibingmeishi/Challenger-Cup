@@ -11,7 +11,7 @@ import Header from '../../components/Header.vue'
 import Swiper from '../../components/Swiper.vue'
 import Welcome from './Welcome.vue'
 export default {
-name:"Welcomepage",
+name:"WelcomePage",
 components:{
     Header,
     Swiper,

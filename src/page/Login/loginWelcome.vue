@@ -7,7 +7,7 @@
 
 <script>
 export default {
-name:'Loginwelcome'
+name:'LoginWelcome'
 }
 </script>
 
@@ -18,6 +18,7 @@ name:'Loginwelcome'
     left: 169px;
     width: 576px;
     height:246px;
+    z-index: 999;
 }
 
 .loginwelcome-text1{

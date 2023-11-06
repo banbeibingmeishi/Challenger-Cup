@@ -11,7 +11,7 @@ import Loginbacg from './loginbacg.vue'
 import LoginWelcome from './loginWelcome.vue'
 import Userlogin from './userlogin.vue'
 export default {
-name:'Logincontent',
+name:'LoginContent',
 components:{
     Loginbacg,
     LoginWelcome,

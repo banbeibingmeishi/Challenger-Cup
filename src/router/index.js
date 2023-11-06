@@ -10,6 +10,9 @@ import Mygexinghua from '../page/Wode/Mygexinghua.vue'
 import Mytougao from '../page/Wode/Mytougao.vue'
 import Creatorcenter from '../page/Wode/Creatorcenter.vue'
 import login from '../page/Login/login.vue'
+import RegisterPage from '../page/Register/register.vue'
+import PhoneLogin from '../page/Login/phonelogin.vue'
+import PasswordLogin from '../page/Login/passwordlogin.vue'
 //引入组件
 const originalPush = VueRouter.prototype.push
 VueRouter.prototype.push = function push(location) {
@@ -53,7 +56,7 @@ export default new VueRouter({
                                 component:Mytougao,
                             },
                         ]
-                        },
+            },
                         {
                             path:'/creatorcenter',
                             component:Creatorcenter
@@ -61,6 +64,20 @@ export default new VueRouter({
             {   
                 path:'/login',
                 component:login,
+                children:[
+                    {
+                        path:'phone',
+                        component:PhoneLogin
+                    },
+                    {
+                        path:'password',
+                        component:PasswordLogin
+                    }
+                ]
             },
+            {
+                path:'/register',
+                component:RegisterPage,
+            }
     ]
 })
